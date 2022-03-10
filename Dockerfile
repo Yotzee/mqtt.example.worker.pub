@@ -19,7 +19,7 @@ RUN dotnet publish "MQTT.PUB.csproj" -c Release -o /app/publish /p:UseAppHost=fa
 
 FROM base AS final
 
-ENV MQTTHost "vernmq"
+ENV MQTTHost "vernemq"
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MQTT.PUB.dll"]

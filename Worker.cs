@@ -18,7 +18,7 @@ public class Worker : BackgroundService
 
         var mqttFactory = new MqttFactory();
         var mqttClient = mqttFactory.CreateMqttClient();
-        var mqttConnectionString = Environment.GetEnvironmentVariable("MQTTHost") ?? "vernmq";
+        var mqttConnectionString = Environment.GetEnvironmentVariable("MQTTHost") ?? "vernemq";
         await mqttClient.ConnectAsync(new MqttClientOptionsBuilder()
                                 .WithTcpServer(mqttConnectionString)
                                 .WithNoKeepAlive()
@@ -42,7 +42,7 @@ public class Worker : BackgroundService
                                             );
 
             _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(30000, stoppingToken);
         }
     }
 }
